@@ -30,19 +30,18 @@ public class GAOperators {
     }
 
 
-    public ArrayList<ArrayList<Integer>> getInitialSolutions() {
+     public ArrayList<ArrayList<Integer>> getInitialSolutions() {
         ArrayList<Integer> all_genes = new ArrayList<>();
         for (int i = 0; i < problem_size; i++) {
-              all_genes.add(i);
+            all_genes.add(i);
         }
 
         ArrayList<ArrayList<Integer>> population = new ArrayList<>();
 
-
         for (int i = 0; i < population_size; i++) {
-            List<Integer> temp_gene = new ArrayList<>(all_genes);
-            java.util.Collections.shuffle(all_genes);
-            population.add(all_genes);
+            ArrayList<Integer> temp_gene = new ArrayList<>(all_genes);
+            java.util.Collections.shuffle(temp_gene);
+            population.add(temp_gene);
         }
         return population;
     }
@@ -80,14 +79,7 @@ public class GAOperators {
 
     }
 
-    public int evaluationSolution(ArrayList<Integer> Solution){
-        int fitness = 0;
-        for (int i = 0; i < Solution.size(); i++) {
-            fitness+=(i*Solution.get(i));
 
-        }
-        return fitness;
-    }
 
     public ArrayList<Integer> performCrossover(ArrayList<Integer> Parent1, ArrayList<Integer> Parent2){
         ArrayList<Integer> crossedList = new ArrayList<Integer>();
@@ -129,7 +121,15 @@ public class GAOperators {
         return mutatedList;
 
     }
+    
+    public int evaluationSolution(ArrayList<Integer> Solution){
+        int fitness = 0;
+        for (int i = 0; i < Solution.size(); i++) {
+            fitness+=(i*Solution.get(i));
 
+        }
+        return fitness;
+    }
 
 
 }
